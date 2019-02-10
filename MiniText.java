@@ -35,35 +35,35 @@ import javax.swing.text.html.HTMLEditorKit;
 
 public class MiniText extends JFrame {
 
-//	automatisch über Eclipse eingefügt
+//	automatisch Ã¼ber Eclipse eingefÃ¼gt
 	private static final long serialVersionUID = -4622810145518216095L;
-//	für das Eingabefeld
+//	fÃ¼r das Eingabefeld
 	private JEditorPane eingabeFeld;
-//	für das Format  wir verwenden HTML
+//	fÃ¼r das Format  wir verwenden HTML
 	private HTMLEditorKit htmlFormat;
 
-//	für die Aktionen
+//	fÃ¼r die Aktionen
 	private MeineAktionen oeffnenAct, speichernAct, beendenAct, neuAct, druckenAct, speichernUnterAct, webOeffnenAct,
 //	EINSENDEAUFGABE 11.01
 			infoAct;
 
-//	für die Datei
+//	fÃ¼r die Datei
 	private File datei;
 
-//	für das Kontext-Menü
+//	fÃ¼r das Kontext-MenÃ¼
 	private JPopupMenu kontext;
 
-//	eine innere Klasse für die Action-Objekte Sie ist von der Klasse AbstractAction abgeleitet
+//	eine innere Klasse fÃ¼r die Action-Objekte Sie ist von der Klasse AbstractAction abgeleitet
 	class MeineAktionen extends AbstractAction {
-//		automatisch über Eclipse ergänzt
+//		automatisch Ã¼ber Eclipse ergÃ¤nzt
 		private static final long serialVersionUID = 5736947176597361976L;
 
 //		der Konstruktor
 		public MeineAktionen(String text, ImageIcon icon, String bildschirmtipp, KeyStroke shortcut,
 				String actionText) {
-//			den Konstruktor der übergeordneten Klasse mit dem Text und dem Icon aufrufen
+//			den Konstruktor der Ã¼bergeordneten Klasse mit dem Text und dem Icon aufrufen
 			super(text, icon);
-//			die Beschreibung setzen für den Bildschirmtipp
+//			die Beschreibung setzen fÃ¼r den Bildschirmtipp
 			putValue(SHORT_DESCRIPTION, bildschirmtipp);
 //			den Shortcut
 			putValue(ACCELERATOR_KEY, shortcut);
@@ -71,7 +71,7 @@ public class MiniText extends JFrame {
 			putValue(ACTION_COMMAND_KEY, actionText);
 		}
 
-//		die überschriebene Methode actionPerformed()
+//		die Ã¼berschriebene Methode actionPerformed()
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			if (e.getActionCommand().equals("neu"))
@@ -83,10 +83,10 @@ public class MiniText extends JFrame {
 			if (e.getActionCommand().equals("beenden"))
 				beenden();
 			if (e.getActionCommand().equals("drucken")) {
-//				wurde die Aktion über eine Schaltfläche gestartet?dann direkt drucken
+//				wurde die Aktion Ã¼ber eine SchaltflÃ¤che gestartet?dann direkt drucken
 				if (e.getSource() instanceof JButton)
 					drucken(false);
-//				wurde die Aktion über einen Menüeintrag gestartet?dann erst den Dialog zeigen
+//				wurde die Aktion Ã¼ber einen MenÃ¼eintrag gestartet?dann erst den Dialog zeigen
 				if (e.getSource() instanceof JMenuItem)
 					drucken(true);
 			}
@@ -100,15 +100,15 @@ public class MiniText extends JFrame {
 		}
 	}
 
-//	eine innere Klasse mit dem Listener für das Kontext-Menü sie ist von der Adapter-Klasse MouseAdapter abgeleitet
+//	eine innere Klasse mit dem Listener fÃ¼r das Kontext-MenÃ¼ sie ist von der Adapter-Klasse MouseAdapter abgeleitet
 	class MeinKontextMenuListener extends MouseAdapter {
 		@Override
 		public void mouseReleased(MouseEvent e) {
-//			die Methode der übergeordneten Klasse aufrufen
+//			die Methode der Ã¼bergeordneten Klasse aufrufen
 			super.mouseReleased(e);
-//			wurde die Maustaste benutzt, die für das Anzeigen des Kontext-Menüs festgelegt ist?
+//			wurde die Maustaste benutzt, die fÃ¼r das Anzeigen des Kontext-MenÃ¼s festgelegt ist?
 			if (e.isPopupTrigger())
-//				dann das Kontext-Menü anzeigen
+//				dann das Kontext-MenÃ¼ anzeigen
 				kontext.show(e.getComponent(), e.getX(), e.getY());
 		}
 	}
@@ -116,15 +116,15 @@ public class MiniText extends JFrame {
 //	der Konstruktor der Klasse MiniText
 	public MiniText(String text) {
 		super(text);
-		System.out.println( this.getClass().getResource( "." ) );
+		
 //		wir nehmen ein Border-Layout
 		setLayout(new BorderLayout());
 
 //		die Aktionen erstellen
 		neuAct = new MeineAktionen("Neu...", new ImageIcon("icons/new24.gif"), "Erstellt ein neues Dokument",
 				KeyStroke.getKeyStroke('N', InputEvent.CTRL_DOWN_MASK), "neu");
-		oeffnenAct = new MeineAktionen("Öffnen...", new ImageIcon("icons/open24.gif"),
-				"Öffnet ein vorhandenes Dokument", KeyStroke.getKeyStroke('O', InputEvent.CTRL_DOWN_MASK), "laden");
+		oeffnenAct = new MeineAktionen("Ã–ffnen...", new ImageIcon("icons/open24.gif"),
+				"Ã–ffnet ein vorhandenes Dokument", KeyStroke.getKeyStroke('O', InputEvent.CTRL_DOWN_MASK), "laden");
 		speichernAct = new MeineAktionen("Speichern", new ImageIcon("icons/save24.gif"),
 				"Speichert das aktuelle Dokument", KeyStroke.getKeyStroke('S', InputEvent.CTRL_DOWN_MASK), "speichern");
 		beendenAct = new MeineAktionen("Beenden", null, "", null, "beenden");
@@ -132,31 +132,31 @@ public class MiniText extends JFrame {
 				KeyStroke.getKeyStroke('P', InputEvent.CTRL_DOWN_MASK), "drucken");
 		speichernUnterAct = new MeineAktionen("Speichern unter...", null, "", null, "speichernUnter");
 		webOeffnenAct = new MeineAktionen("Webseite...", new ImageIcon("icons/webComponent24.gif"),
-				"Öffnet eine Webseite", null, "webladen");
+				"Ã–ffnet eine Webseite", null, "webladen");
 //		EINSENDEAUFGABE 11.01
 		infoAct = new MeineAktionen("Info...", new ImageIcon("icons/information24.gif"), "Programm Informationen",
 				KeyStroke.getKeyStroke('I', InputEvent.CTRL_DOWN_MASK), "information");
 
-//		das Menü erzeugen
+//		das MenÃ¼ erzeugen
 		menu();
-//		die Symbolleiste oben einfügen
+//		die Symbolleiste oben einfÃ¼gen
 		add(symbolleiste(), BorderLayout.NORTH);
-//		das Kontext-Menü erzeugen
+//		das Kontext-MenÃ¼ erzeugen
 		kontextMenu();
 
 //		das Eingabefeld erzeugen und mit dem EditorKit verbinden 
 		eingabeFeld = new JEditorPane();
 		htmlFormat = new HTMLEditorKit();
 		eingabeFeld.setEditorKit(htmlFormat);
-//		das Eingabefeld mit dem Listener für das Kontext-Menü verbinden
+//		das Eingabefeld mit dem Listener fÃ¼r das Kontext-MenÃ¼ verbinden
 		eingabeFeld.addMouseListener(new MeinKontextMenuListener());
 
-//		gegebenenfalls mit Scrollbars in der Mitte einfügen
+//		gegebenenfalls mit Scrollbars in der Mitte einfÃ¼gen
 		add(new JScrollPane(eingabeFeld), BorderLayout.CENTER);
 
 //		anzeigen und Standard-Verhalten festlegen das Fenster ist maximiert
 		setExtendedState(MAXIMIZED_BOTH);
-//		die Mindestgröße setzen
+//		die MindestgrÃ¶ÃŸe setzen
 		setMinimumSize(new Dimension(600, 200));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
@@ -165,25 +165,25 @@ public class MiniText extends JFrame {
 		eingabeFeld.requestFocus();
 	}
 
-//	die Methode erstellt die Menüleiste
+//	die Methode erstellt die MenÃ¼leiste
 	private void menu() {
 		JMenuBar menue = new JMenuBar();
-//		das Menü Datei
+//		das MenÃ¼ Datei
 		JMenu dateiMenue = new JMenu("Datei");
 		
 //		EINSENDEAUFGABE 11.01
 		JMenu hilfeMenue = new JMenu("Hilfe");
 
-//		das Untermenü Öffnen es ist vom Typ Menu, da es weitere Untereinträge haben soll
-		JMenu dateiOeffnen = new JMenu("Öffnen");
-//		die Einträge werden jetzt zum Untermenü hinzugefügt das "normale" Öffnen
+//		das UntermenÃ¼ Ã–ffnen es ist vom Typ Menu, da es weitere UntereintrÃ¤ge haben soll
+		JMenu dateiOeffnen = new JMenu("Ã–ffnen");
+//		die EintrÃ¤ge werden jetzt zum UntermenÃ¼ hinzugefÃ¼gt das "normale" Ã–ffnen
 		dateiOeffnen.add(oeffnenAct);
-//		das Öffnen aus dem Internet
+//		das Ã–ffnen aus dem Internet
 		dateiOeffnen.add(webOeffnenAct);
 
-//		die Einträge werden direkt über Action-Objekte erzeugt der Eintrag Neu
+//		die EintrÃ¤ge werden direkt Ã¼ber Action-Objekte erzeugt der Eintrag Neu
 		dateiMenue.add(neuAct);
-//		das komplette Untermenü einfügen
+//		das komplette UntermenÃ¼ einfÃ¼gen
 		dateiMenue.add(dateiOeffnen);
 
 //		der Eintrag Speichern
@@ -204,7 +204,7 @@ public class MiniText extends JFrame {
 //		EINSENDEAUFGABE 11.01
 		hilfeMenue.add(infoAct);
 
-//		das gesamte Menü hinzufügen
+//		das gesamte MenÃ¼ hinzufÃ¼gen
 		menue.add(dateiMenue);
 //		EINSENDEAUFGABE 11.01
 		menue.add(hilfeMenue);
@@ -215,18 +215,18 @@ public class MiniText extends JFrame {
 	private JToolBar symbolleiste() {
 		JToolBar leiste = new JToolBar();
 
-//		die Symbole werden ebenfalls direkt über Action-Objekte erzeugt das Symbol Neu
+//		die Symbole werden ebenfalls direkt Ã¼ber Action-Objekte erzeugt das Symbol Neu
 		leiste.add(neuAct);
-//		das Symbol Öffnen
+//		das Symbol Ã–ffnen
 		leiste.add(oeffnenAct);
-//		das Symbol für das Laden von Webseiten
+//		das Symbol fÃ¼r das Laden von Webseiten
 		leiste.add(webOeffnenAct);
 //		das Symbol Speichern
 		leiste.add(speichernAct);
 //		das Symbol Drucken
 		leiste.add(druckenAct);
 
-//		etwas Platz einfügen
+//		etwas Platz einfÃ¼gen
 		leiste.addSeparator();
 		
 //		EINSENDEAUFGABE 11.02
@@ -239,55 +239,55 @@ public class MiniText extends JFrame {
 		kopieren.putValue(Action.LARGE_ICON_KEY, new ImageIcon("icons/copy24.gif"));
 		leiste.add(kopieren);
 		Action einfuegen = new DefaultEditorKit.PasteAction();
-		einfuegen.putValue(Action.SHORT_DESCRIPTION, "Einfügen");
+		einfuegen.putValue(Action.SHORT_DESCRIPTION, "EinfÃ¼gen");
 		einfuegen.putValue(Action.LARGE_ICON_KEY, new ImageIcon("icons/paste24.gif"));
 		leiste.add(einfuegen);
 		leiste.addSeparator();
-//		ein Symbol für die fette Zeichenformatierung über eine Standard-Aktion aus dem StyledEditorKit
+//		ein Symbol fÃ¼r die fette Zeichenformatierung Ã¼ber eine Standard-Aktion aus dem StyledEditorKit
 		// die neue Aktion erzeugen. Vorsicht! Es gibt mehrere Klassen Action. Richtig
 		// ist die aus javax.swing
 		Action fettFormat = new StyledEditorKit.BoldAction();
 //		den Bildschirmtipp und das Symbol setzen
 		fettFormat.putValue(Action.SHORT_DESCRIPTION, "Fett formatieren");
 		fettFormat.putValue(Action.LARGE_ICON_KEY, new ImageIcon("icons/bold24.gif"));
-//		und zur Leiste hinzufügen
+//		und zur Leiste hinzufÃ¼gen
 		leiste.add(fettFormat);
 
-//		ein Symbol für die kursive Zeichenformatierung
+//		ein Symbol fÃ¼r die kursive Zeichenformatierung
 		Action kursivFormat = new StyledEditorKit.ItalicAction();
 		kursivFormat.putValue(Action.SHORT_DESCRIPTION, "Kursiv formatieren");
 		kursivFormat.putValue(Action.LARGE_ICON_KEY, new ImageIcon("icons/italic24.gif"));
 		leiste.add(kursivFormat);
 
-//		ein Symbol für die unterstrichene Zeichenformatierung
+//		ein Symbol fÃ¼r die unterstrichene Zeichenformatierung
 		Action unterstrichenFormat = new StyledEditorKit.UnderlineAction();
 		unterstrichenFormat.putValue(Action.SHORT_DESCRIPTION, "Unterstrichen formatieren");
 		unterstrichenFormat.putValue(Action.LARGE_ICON_KEY, new ImageIcon("icons/underline24.gif"));
 		leiste.add(unterstrichenFormat);
 
-//		Platz einfügen
+//		Platz einfÃ¼gen
 		leiste.addSeparator();
 
-//		das Symbol für die linksbündige Ausrichtung an den Konstruktor von StyledEditorKit.
-//		AlignmentAction() wird eine Beschreibung und die gewünschte Ausrichtung übergeben
-		Action linksAbsatz = new StyledEditorKit.AlignmentAction("Linksbündig", StyleConstants.ALIGN_LEFT);
-		linksAbsatz.putValue(Action.SHORT_DESCRIPTION, "Linksbündig ausrichten");
+//		das Symbol fÃ¼r die linksbÃ¼ndige Ausrichtung an den Konstruktor von StyledEditorKit.
+//		AlignmentAction() wird eine Beschreibung und die gewÃ¼nschte Ausrichtung Ã¼bergeben
+		Action linksAbsatz = new StyledEditorKit.AlignmentAction("LinksbÃ¼ndig", StyleConstants.ALIGN_LEFT);
+		linksAbsatz.putValue(Action.SHORT_DESCRIPTION, "LinksbÃ¼ndig ausrichten");
 		linksAbsatz.putValue(Action.LARGE_ICON_KEY, new ImageIcon("icons/alignLeft24.gif"));
 		leiste.add(linksAbsatz);
 
-//		das Symbol für die zentrierte Ausrichtung
+//		das Symbol fÃ¼r die zentrierte Ausrichtung
 		Action zentriertAbsatz = new StyledEditorKit.AlignmentAction("Zentriert", StyleConstants.ALIGN_CENTER);
 		zentriertAbsatz.putValue(Action.SHORT_DESCRIPTION, "Zentriert ausrichten");
 		zentriertAbsatz.putValue(Action.LARGE_ICON_KEY, new ImageIcon("icons/alignCenter24.gif"));
 		leiste.add(zentriertAbsatz);
 
-//		das Symbol für die rechtsbündige Ausrichtung
+//		das Symbol fÃ¼r die rechtsbÃ¼ndige Ausrichtung
 		Action rechtsAbsatz = new StyledEditorKit.AlignmentAction("Rechts", StyleConstants.ALIGN_RIGHT);
-		rechtsAbsatz.putValue(Action.SHORT_DESCRIPTION, "Rechtsbündig ausrichten");
+		rechtsAbsatz.putValue(Action.SHORT_DESCRIPTION, "RechtsbÃ¼ndig ausrichten");
 		rechtsAbsatz.putValue(Action.LARGE_ICON_KEY, new ImageIcon("icons/alignRight24.gif"));
 		leiste.add(rechtsAbsatz);
 
-//		das Symbol für den Blocksatz
+//		das Symbol fÃ¼r den Blocksatz
 		Action blockAbsatz = new StyledEditorKit.AlignmentAction("Blocksatz", StyleConstants.ALIGN_JUSTIFIED);
 		blockAbsatz.putValue(Action.SHORT_DESCRIPTION, "Im Blocksatz ausrichten");
 		blockAbsatz.putValue(Action.LARGE_ICON_KEY, new ImageIcon("icons/alignJustify24.gif"));
@@ -298,29 +298,29 @@ public class MiniText extends JFrame {
 //		EINSENDEAUFGABE 11.01
 		leiste.add(infoAct);
 
-//		die komplette Leiste zurückgeben
+//		die komplette Leiste zurÃ¼ckgeben
 		return (leiste);
 	}
 
-//	die Methode erstellt das Kontext-Menü
+//	die Methode erstellt das Kontext-MenÃ¼
 	private void kontextMenu() {
 //		kontext ist eine Instanzvariable vom Typ JPopupMenu
 		kontext = new JPopupMenu();
-//		den Eintrag Neu hinzufügen
+//		den Eintrag Neu hinzufÃ¼gen
 		kontext.add(neuAct);
-//		die Einträge zum Öffnen
+//		die EintrÃ¤ge zum Ã–ffnen
 		kontext.add(oeffnenAct);
 		kontext.add(webOeffnenAct);
 //		EINSENDEAUFGABE 11.01
 		kontext.add(infoAct);
 	}
 
-//	die Methode für die Funktion Neu
+//	die Methode fÃ¼r die Funktion Neu
 	private void dateiNeu() {
 //		eine Abfrage
 		if (JOptionPane.showConfirmDialog(this, "Wollen Sie wirklich ein neues Dokument anlegen?", "Neues Dokument",
 				JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-//			den Text löschen
+//			den Text lÃ¶schen
 			eingabeFeld.setText("");
 //			datei wieder auf null setzen, damit klar ist, dass die Datei noch nicht gespeichert wurde
 			datei = null;
@@ -329,13 +329,13 @@ public class MiniText extends JFrame {
 
 //	die Methode zum Laden einer Datei
 	private void dateiLaden() {
-//		für den Dialog
+//		fÃ¼r den Dialog
 		MiniTextDialoge dialog = new MiniTextDialoge();
 
-//		die Datei über den Dialog Öffnen beschaffen es wird erst einmal in einer lokalen Variablen zwischengespeichert
+//		die Datei Ã¼ber den Dialog Ã–ffnen beschaffen es wird erst einmal in einer lokalen Variablen zwischengespeichert
 		File dateiLokal = dialog.oeffnenDialogZeigen();
 
-//		wenn eine Datei ausgewählt wurde, einlesen die Methode read() erzwingt eine Ausnahmebehandlung
+//		wenn eine Datei ausgewÃ¤hlt wurde, einlesen die Methode read() erzwingt eine Ausnahmebehandlung
 		if (dateiLokal != null) {
 			try {
 				eingabeFeld.read(new FileReader(dateiLokal), null);
@@ -353,16 +353,16 @@ public class MiniText extends JFrame {
 //		WICHTIG!!!!
 //		datei muss als Instanzvariable vereinbart werden, wenn die Datei noch nicht gespeichert wurde, ist datei noch null
 		if (datei == null) {
-//			für den Dialog
+//			fÃ¼r den Dialog
 			MiniTextDialoge dialog = new MiniTextDialoge();
-//			die Datei über den Dialog Speichern beschaffen
+//			die Datei Ã¼ber den Dialog Speichern beschaffen
 			datei = dialog.speichernDialogZeigen();
 		}
-//		ist datei ungleich null, dann wurde vorher schon einmal gespeichert bzw. im Dialog eine Datei ausgewählt
+//		ist datei ungleich null, dann wurde vorher schon einmal gespeichert bzw. im Dialog eine Datei ausgewÃ¤hlt
 		if (datei != null) {
 //			die Ausnahmebehandlung ist zwingend erforderlich
 			try {
-//				den Output-Stream für die Datei beschaffen
+//				den Output-Stream fÃ¼r die Datei beschaffen
 				OutputStream output = new FileOutputStream(datei);
 //				das Dokument komplett speichern
 				htmlFormat.write(output, eingabeFeld.getDocument(), 0, eingabeFeld.getDocument().getLength());
@@ -373,13 +373,13 @@ public class MiniText extends JFrame {
 		}
 	}
 
-//	die Methode öffnet den Speichern-Dialog und ruft die Methode dateiSpeichern() auf,wenn ein neuer Name ausgewählt wurde
+//	die Methode Ã¶ffnet den Speichern-Dialog und ruft die Methode dateiSpeichern() auf,wenn ein neuer Name ausgewÃ¤hlt wurde
 	private void dateiSpeichernUnter() {
-//		für den Dialog
+//		fÃ¼r den Dialog
 		MiniTextDialoge dialog = new MiniTextDialoge();
-//		die Datei über den Dialog Speichern beschaffen
+//		die Datei Ã¼ber den Dialog Speichern beschaffen
 		File dateiLokal = dialog.speichernDialogZeigen();
-//		ist dateiLokal ungleich null, dann wurde ein neuer Name ausgewählt
+//		ist dateiLokal ungleich null, dann wurde ein neuer Name ausgewÃ¤hlt
 		if (dateiLokal != null) {
 			datei = dateiLokal;
 			dateiSpeichern();
@@ -389,7 +389,7 @@ public class MiniText extends JFrame {
 //	die Methode beendet die Anwendung nach einer Abfrage
 	private void beenden() {
 
-		if (JOptionPane.showConfirmDialog(this, "Sind Sie sicher?", "Anwendung schließen",
+		if (JOptionPane.showConfirmDialog(this, "Sind Sie sicher?", "Anwendung schlieÃŸen",
 				JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
 			System.exit(0);
 	}
@@ -414,15 +414,15 @@ public class MiniText extends JFrame {
 				JOptionPane.INFORMATION_MESSAGE);
 	}
 
-//	die Methode öffnet ein Dokument aus dem Internet
+//	die Methode Ã¶ffnet ein Dokument aus dem Internet
 	private void webLaden() {
-//		für die URL
+//		fÃ¼r die URL
 		String adresse;
 //		einen Dialog zur Eingabe erzeugen
 		adresse = JOptionPane.showInputDialog(this, "Bitte geben Sie die URL der Seite ein:");
 //		wurde etwas eingegeben?
 		if (adresse != null) {
-//			den Text im Feld löschen
+//			den Text im Feld lÃ¶schen
 			eingabeFeld.setText("");
 			try {
 //				den Inhalt anzeigen
