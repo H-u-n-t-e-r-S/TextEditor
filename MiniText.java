@@ -436,7 +436,7 @@ public class MiniText extends JFrame {
 	}
 
 	public static void main(String[] args) {
-		new MiniText(" Text Editor");
+		new MiniText(" MiniText");
 		
 	}
 }
